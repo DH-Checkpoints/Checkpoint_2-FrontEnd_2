@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do App</title>
+
+    <!-- ---------------- estilos compartilhados entre login e signup ---------------- -->
+    <link rel="stylesheet" href="styles/acesso.css" />
+  </head>
+
+  <body>
+    <div class="left">
+      <img src="./assets/pessoa-signup.png" alt="" />
+    </div>
+    <div class="right">
+      <form>
+        <div class="form-header">
+          <p>To-Do App</p>
+        </div>
+
+        <div class="form-control">
+          <label for="firstName">Nome: </label>
+          <input type="text" id="firstName" minlength="2" required/>
+          <small>Não se esqueça do nome</small>
+        </div>
+
+        <div class="form-control">
+          <label for="lastName"> Sobrenome:</label>
+          <input type="text" id="lastName"required/>
+          <small>Não se esqueça do sobrenome</small>
+        </div>
+
+        <div class="form-control">
+          <label for="email">Email:</label>
+          <input type="email" id="email" required/>
+          <small>Forneça um email válido</small>
+        </div>
+
+        <div class="form-control">
+          <label for="password">Senha: </label>
+          <input type="password" id="password" minlength="8" required/>
+          <small>Mínimo 8 caractéries</small>
+        </div>
+
+        <div class="form-control">
+          <label for="passwordConfirm">Repetir senha: </label>
+          <input type="password" id="passwordConfirm" required/>
+          <small>As senhas não são iguais</small>
+        </div>
+
+        <div class="control-button">
+          <button id="createUserButton">Criar conta</button>
+        </div>
+      </form>
+      <div class="ingressar">
+        <a href="index.html">Já possui conta? Acesse aqui</a>
+      </div>
+    </div>
+
+    <script src="./scripts/main.js" type="module"></script>
+    
+  </body>
+</html>
