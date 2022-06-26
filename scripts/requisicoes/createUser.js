@@ -26,10 +26,6 @@ const createUser = (props) => {
       }
     })
   }) 
-  
-  localStorage.setItem('Nome', props.firstName)
-   
-
 
 }
 
