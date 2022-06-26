@@ -16,8 +16,8 @@ var formValidation = {
   passwordConfirm: false
 }
 
-// const signup = () => {
-function signup(){
+const signup = () => {
+// function signup(){
 
   for (let control of formControlsElements) {
     const controlInputElement = control.children[1]
@@ -54,15 +54,29 @@ function signup(){
     let formValid = Object.values(formValidation).every(Boolean)
 
     if (formValid) {
+      Swal.fire({
+        title: 'Usuário cadastrado com sucesso',
+        text: "Deseja fazer o login?",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: 'green',
+        cancelButtonColor: 'red',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            window.location = '/index.html'
+        }
+      })
+
     localStorage.setItem('E-mail', formValidation.email)
       createUSer(formValidation)
 
-      window.location = '/index.html'
+   
     } else {
       console.log('Algo de errado não está certo')
     }
   })
 }
 
-export default signup();
+export default signup;
 
