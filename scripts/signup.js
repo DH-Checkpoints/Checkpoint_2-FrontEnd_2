@@ -7,10 +7,6 @@ const formControlsElements = document.querySelectorAll('.form-control')
 // Selecionando o botão para criar novo usuário
 const createUserButtonElement = document.querySelector('#createUserButton')
 
-// Selecionando os inputs de senha para fazer comparação de igualdade
-const userPasswordElement = document.querySelector('#password')
-const userPasswordConfirmElement = document.getElementById('passwordConfirm')
-
 // Objeto para armazenar os dados dos inputs
 var formValidation = {
   firstName: false,
@@ -20,8 +16,8 @@ var formValidation = {
   passwordConfirm: false
 }
 
-const signup = () => {
-
+// const signup = () => {
+function signup(){
 
   for (let control of formControlsElements) {
     const controlInputElement = control.children[1]
@@ -39,22 +35,15 @@ const signup = () => {
       } else {
         control.classList.add('error')
       }
+
+      if(controlInputElement.id ==='passwordConfirm'){
+        if(controlInputElement.value != formValidation['password']){
+          control.classList.add('error')
+        }
+      }
     })
   }
 
-  /// Add um escutador de evento ao passwordConfirm -
-  // Tem a opção do 'blur', que é para o momento em que o campo do input deixar de estar selecionado, no caso cliacar fora ou precionar o tab
-  userPasswordConfirmElement.addEventListener('keyup', event => {
-    //Verificando se os campos são diferentes
-    let verificacao =
-      userPasswordElement.value !== userPasswordConfirmElement.value
-    if (verificacao) {
-      //Se forem diferentes, adiciono a classe error no passwordConfirm
-      formControlsElements[4].classList.add('error')
-      // Setando o atributo como false para impedir de prosseguir no clique do botao
-      formValidation[event.target.id] = false
-    }
-  })
 
   ///// EVENTO DE CLIQUE NO BOTÃO
  
@@ -65,23 +54,15 @@ const signup = () => {
     let formValid = Object.values(formValidation).every(Boolean)
 
     if (formValid) {
-      // window.location = './pages/login.html'
-      
-      createUSer(formValidation);
+    localStorage.setItem('E-mail', formValidation.email)
+      createUSer(formValidation)
+
+      window.location = '/index.html'
     } else {
       console.log('Algo de errado não está certo')
     }
   })
 }
 
-export default signup
+export default signup();
 
-
-/* 
-      // inicia loading
-      try {
-      } catch(err) {
-        // mostra erro pro usuario
-      } finally {
-        // retira loading
-      } */
