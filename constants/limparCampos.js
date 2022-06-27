@@ -3,16 +3,16 @@
 
 
 
-export const limparValorDeObjetos = (inputElement, chave) => {
+export const limparValorDeObjetos = (inputParaSerLimpo, objetoParaSerLimpo = '') => {
   //Para limpar os campos
-  for (let control of inputElement) {
+  for (let control of inputParaSerLimpo) {
     const controlInputElement = control.children[1]
     controlInputElement.value = ''
   }
 
   //Para limpar o objeto
-  Object.keys(chave).forEach(valor => {
-    chave[valor] = ''
+  Object.keys(objetoParaSerLimpo).forEach(valor => {
+    objetoParaSerLimpo[valor] = ''
   })
 
 
