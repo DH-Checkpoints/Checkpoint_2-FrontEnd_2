@@ -14,19 +14,69 @@ const loginUser = objetoUsuario => {
 
   fetch(`${BASE_URL}/users/login`, requestPostUserConfiguration).then(
     response => {
+      console.log(response)
       response.json().then(data => {
-        try {          
-          console.log(data)
-        } 
-        catch (erro) {
-          alert('ta errado aí irmão')
+        if (response.status === 201) {
+          console.log('Cabra existe')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Tudo certo',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
-        finally{
-          
+        if (response.status === 400) {
+          Swal.fire(
+            'Opa!',
+            'Senha errada',
+            'error'
+          )
+          console.log('Senha errada')
         }
+        if (response.status === 404) {
+          Swal.fire({
+            title: 'Você não tem conta',
+            text: "Vamos cadastrar uma?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, quero!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.href = '/cadastro.html'
+              
+            }
+          })
+        }
+        if (response.status === 500) {
+          Swal.fire(
+            'Opa!',
+            'Temos um probleminha aqui!',
+            'warning'
+          )
+          console.log('erro servidor')
+        }
+
       })
     }
   )
 }
 
 export default loginUser
+
+/* 
+
+/////// informações de resposta da API
+body: (…)
+bodyUsed: true
+headers: Headers {}
+ok: true
+redirected: false
+status: 201
+statusText: "Created"
+type: "cors"
+url: "https://ctd-todo-api.herokuapp.com/v1/users/login"
+[[Prototype]]: Response
+ */

@@ -41,8 +41,12 @@ const signup = () => {
       if (controlInputElement.id === 'passwordConfirm') {
         if (controlInputElement.value != formValidation['password']) {
           control.classList.add('error')
+        }else{
+          createUserButtonElement.disabled = false
+          createUserButtonElement.focus()
         }
       }
+
     })
   }
 
@@ -67,12 +71,9 @@ const signup = () => {
       }).then(result => {
         if (result.isConfirmed) {
           window.location = '/index.html'
-          limparValorDeObjetos(formControlsElements,formValidation)
-
-        }
-        else{
-          limparValorDeObjetos(formControlsElements,formValidation)
-
+          limparValorDeObjetos(formControlsElements, formValidation)
+        } else {
+          limparValorDeObjetos(formControlsElements, formValidation)
         }
       })
 
@@ -91,8 +92,11 @@ const signup = () => {
         if (result.isConfirmed) {
           Swal.fire('Feito!', 'Informações apagadas', 'success')
 
-          
-          limparValorDeObjetos(formControlsElements,formValidation,primeiroElementoInput)
+          limparValorDeObjetos(
+            formControlsElements,
+            formValidation,
+            primeiroElementoInput
+          )
         }
       })
     }
