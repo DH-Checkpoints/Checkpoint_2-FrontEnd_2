@@ -1,5 +1,7 @@
 //Importando a função de criar usuaŕios
 import createUSer from './requisicoes/createUser.js'
+//importando função para limpar os campos
+import { limparValorDeObjetos } from '../constants/limparCampos.js'
 
 // Selecionando as divs que contém a classe form-control
 const formControlsElements = document.querySelectorAll('.form-control')
@@ -16,8 +18,8 @@ var formValidation = {
   passwordConfirm: false
 }
 
-// const signup = () => {
-function signup(){
+const signup = () => {
+  // function signup(){
 
   for (let control of formControlsElements) {
     const controlInputElement = control.children[1]
@@ -36,17 +38,16 @@ function signup(){
         control.classList.add('error')
       }
 
-      if(controlInputElement.id ==='passwordConfirm'){
-        if(controlInputElement.value != formValidation['password']){
+      if (controlInputElement.id === 'passwordConfirm') {
+        if (controlInputElement.value != formValidation['password']) {
           control.classList.add('error')
         }
       }
     })
   }
 
-
   ///// EVENTO DE CLIQUE NO BOTÃO
- 
+
   createUserButtonElement.addEventListener('click', event => {
     event.preventDefault()
 
@@ -54,15 +55,48 @@ function signup(){
     let formValid = Object.values(formValidation).every(Boolean)
 
     if (formValid) {
-    localStorage.setItem('E-mail', formValidation.email)
-      createUSer(formValidation)
+      Swal.fire({
+        title: 'Usuário cadastrado com sucesso',
+        text: 'Deseja fazer o login?',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3cc45e',
+        cancelButtonColor: '#F9806F',
+        confirmButtonText: 'Sim      😃',
+        cancelButtonText: 'Não   (criar novo usuário)    😃'
+      }).then(result => {
+        if (result.isConfirmed) {
+          window.location = '/index.html'
+          limparValorDeObjetos(formControlsElements,formValidation)
 
-      window.location = '/index.html'
+        }
+        else{
+          limparValorDeObjetos(formControlsElements,formValidation)
+
+        }
+      })
+
+      localStorage.setItem('E-mail', formValidation.email)
+      createUSer(formValidation)
     } else {
-      console.log('Algo de errado não está certo')
+      Swal.fire({
+        title: 'Opa, opa, opa!?',
+        text: 'Há campos vazios ou incorretos!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3cc45e',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Apagar e tentar novamente?'
+      }).then(result => {
+        if (result.isConfirmed) {
+          Swal.fire('Feito!', 'Informações apagadas', 'success')
+
+          
+          limparValorDeObjetos(formControlsElements,formValidation,primeiroElementoInput)
+        }
+      })
     }
   })
 }
 
-export default signup();
-
+export default signup
