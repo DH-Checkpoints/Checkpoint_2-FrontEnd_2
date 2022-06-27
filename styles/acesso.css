@@ -47,6 +47,8 @@ input:focus {
   border: 1px solid lightgrey;
 }
 
+
+
 label {
   width: 100%;
   font-weight: 300;
@@ -62,6 +64,11 @@ button {
   margin-top: 2em;
   font-weight: 400;
   font-size: 1em;
+}
+
+button:disabled{
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 .form-header {
