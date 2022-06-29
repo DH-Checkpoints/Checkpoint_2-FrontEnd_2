@@ -29,7 +29,8 @@ const signup = () => {
       let inputValue = event.target.value
 
       if (inputValid) {
-        formValidation[event.target.id] = inputValue
+        // Removendo os espaços antes e depois com o metodo trim()
+        formValidation[event.target.id] = inputValue.trim()
       }
 
       if (inputValid) {
@@ -58,7 +59,15 @@ const signup = () => {
     let formValid = Object.values(formValidation).every(Boolean)
 
     if (formValid) {
-      localStorage.setItem('E-mail', formValidation.email)
+      
+      // Guardando o email em caixa baixa:
+      formValidation.email = formValidation.email.toLowerCase()
+
+      // Salvando o e-mail no localStorage
+      localStorage.setItem('nome', formValidation.firstName)
+      localStorage.setItem('email', formValidation.email)
+
+      //Enviando os dados para a requisição criar o usuário
       createUSer(formValidation)
     }
   })
