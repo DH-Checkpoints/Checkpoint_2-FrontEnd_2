@@ -167,4 +167,7 @@ E a main estará atualizada.
 Após desenvolver, commitar, fazer o push, abrir o PR e o mesmo for aprovado o processo estará concluído.
 E tudo se inicia novamente sempre que formos atualizar nosso projeto até a finalização do mesmo.
 
+
+
 Valeu galera.
+#Tmj
