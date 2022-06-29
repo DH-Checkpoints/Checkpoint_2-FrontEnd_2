@@ -136,33 +136,48 @@ Após ter feito o **push** , o próximo passo é gerar o *Pull Request (PR)* lá
 Estando no repositório que o push foi feito, irá aparecer logo de cara a informação de gerar um pull request:
 ![](https://i.ibb.co/RBVXNY7/Captura-de-tela-de-2022-06-29-16-56-49.png)
 
+---
+
 Ao clicar no botão de **Compare & pull request**  a tela apresentada será essa aqui:
 ![enter image description here](https://i.ibb.co/mBWW3y4/Captura-de-tela-de-2022-06-29-17-09-45.png)
 
-E **antes** de clicar em **Create pull request** precisaremos colocar um colega para revisar o código.
-Essa opção fica na coluna a direita:
+---
+
+E **antes** de clicar em **Create pull request** precisaremos colocar um colega para revisar o código. Essa opção fica na coluna a direita:
 ![](https://i.ibb.co/g4fN9Yd/Captura-de-tela-de-2022-06-29-17-13-11.png)
 
+<br><br>
+
 Feito isso, iremos clicar em **create pull request** 
+
+---
 
 E para quem esta aguardando a aprovação, a tela apresentada é a seguinte:
 ![](https://i.ibb.co/y89TCpB/Captura-de-tela-de-2022-06-29-17-15-57.png)
 Ou seja, o **merge para a branch main** só será feito por quem requisitou após a aprovação de um **reviewer**.
 
+---
 
 Para quem recebeu a missao de revisar o código, ao entrar no repositório a seguinte tela será apresentada:
 ![](https://i.ibb.co/stBrDQr/Captura-de-tela-de-2022-06-29-17-26-54.png)
+
+---
+
 Clicando em **Add your review** será apresentado as alterações e o que esta sendo solicitado aprovação e o botão para adicionar um review:
 ![](https://i.ibb.co/j3xp6wH/Captura-de-tela-de-2022-06-29-17-30-25.png)
 Podendo aqui ser adicionado um comentário.
 
-Selecionando o approve(aprovação) e enviando, a tela seguinte é para fazer o **merge para a main**, e o solicitante ou o revisor poderá realizar o *merge para a main*.
+---
+
+- Selecionando o approve(aprovação) e enviando, a tela seguinte é para fazer o **merge para a main**, e o solicitante ou o revisor poderá realizar o *merge para a main*.
 ![](https://i.ibb.co/Mh8hkZh/Captura-de-tela-de-2022-06-29-17-33-00.png)
 
-Após o merge, a seguitne tela irá aparecer:
+---
+
+- Após o merge, a seguitne tela irá aparecer:
 ![](https://i.ibb.co/cwX7sjk/Captura-de-tela-de-2022-06-29-18-05-05.png)
 E a main estará atualizada.
-
+<br><br><br><br>
 ## Pronto!
 Após desenvolver, commitar, fazer o push, abrir o PR e o mesmo for aprovado o processo estará concluído.
 E tudo se inicia novamente sempre que formos atualizar nosso projeto até a finalização do mesmo.
