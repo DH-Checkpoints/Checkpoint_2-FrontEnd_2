@@ -1,9 +1,7 @@
 //Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
 
-
-const createUser = (props) => {
-
+const createUser = props => {
   let requestHeader = {
     Accept: 'Application/json',
     'Content-Type': 'application/json'
@@ -18,7 +16,6 @@ const createUser = (props) => {
   fetch(`${BASE_URL}/users`, requestPostConfiguration).then(response => {
     response.json().then(info => {
       if (response.ok) {
-
         Swal.fire({
           title: 'Usuário cadastrado com sucesso',
           text: 'Deseja fazer o login?',
@@ -36,42 +33,19 @@ const createUser = (props) => {
             limparValorDeObjetos(formControlsElements, formValidation)
           }
         })
-        
+
         console.log('foi, agora se vira')
       } else {
         if (info === 'El usuario ya se encuentra registrado') {
           Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Usuário já cadastrado!',
-            
-          })
-
-
-          /* Swal.fire({
-            title: 'Opa, opa, opa!?',
-            text: 'Há campos vazios ou incorretos!',
             icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3cc45e',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Apagar e tentar novamente?'
-          }).then(result => {
-            if (result.isConfirmed) {
-              Swal.fire('Feito!', 'Informações apagadas', 'success')
-    
-              limparValorDeObjetos(
-                formControlsElements,
-                formValidation,
-                primeiroElementoInput
-              )
-            }
-          }) */
+            title: 'Oops...',
+            text: 'Usuário já cadastrado!'
+          })
         }
       }
     })
-  }) 
-
+  })
 }
 
-export default createUser;
+export default createUser
