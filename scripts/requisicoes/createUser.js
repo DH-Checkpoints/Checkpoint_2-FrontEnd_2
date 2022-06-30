@@ -1,7 +1,8 @@
 //Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
+import { loading } from '../../constants/loading.js'
 
-const createUser = props => {
+const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
   let requestHeader = {
     Accept: 'Application/json',
     'Content-Type': 'application/json'
@@ -10,11 +11,12 @@ const createUser = props => {
   let requestPostConfiguration = {
     method: 'POST',
     headers: requestHeader,
-    body: JSON.stringify(props)
+    body: JSON.stringify(dadosObjetoUsuario)
   }
 
   fetch(`${BASE_URL}/users`, requestPostConfiguration).then(response => {
     response.json().then(info => {
+      loading()
       if (response.ok) {
         Swal.fire({
           title: 'Usuário cadastrado com sucesso',
@@ -28,9 +30,6 @@ const createUser = props => {
         }).then(result => {
           if (result.isConfirmed) {
             window.location = '/index.html'
-            limparValorDeObjetos(formControlsElements, formValidation)
-          } else {
-            limparValorDeObjetos(formControlsElements, formValidation)
           }
         })
 
@@ -42,6 +41,7 @@ const createUser = props => {
             title: 'Oops...',
             text: 'Usuário já cadastrado!'
           })
+          botaoCriaUsuario.disabled = true
         }
       }
     })
