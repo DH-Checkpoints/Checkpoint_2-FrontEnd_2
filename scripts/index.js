@@ -1,5 +1,6 @@
 import loginUser from './requisicoes/loginUser.js'
 
+import {loading} from '../constants/loading.js'
 import { limparValorDeObjetos } from '../constants/limparCampos.js'
 
 
@@ -32,9 +33,11 @@ const index = () => {
   }
 }
 
+
 loginUserButtonElement ?
 loginUserButtonElement.addEventListener('click', event => {
   event.preventDefault()
+  loading();
   loginUser(formValidationLogin)
   limparValorDeObjetos(inputElement)
 

@@ -2,6 +2,9 @@
 import createUSer from './requisicoes/createUser.js'
 //importando função para limpar os campos
 import { limparValorDeObjetos } from '../constants/limparCampos.js'
+//importando o loading
+import {loading} from '../constants/loading.js'
+
 
 // Selecionando as divs que contém a classe form-control
 const formControlsElements = document.querySelectorAll('.form-control')
@@ -58,6 +61,10 @@ const signup = () => {
     // Para verificar se todos os valores estao true/Válido
     let formValid = Object.values(formValidation).every(Boolean)
 
+
+    loading();
+
+
     if (formValid) {
       
       // Guardando o email em caixa baixa:
@@ -68,7 +75,11 @@ const signup = () => {
       localStorage.setItem('email', formValidation.email)
 
       //Enviando os dados para a requisição criar o usuário
-      createUSer(formValidation)
+      createUSer(formValidation, createUserButtonElement)
+
+
+    //Função para limpar os campos e o objeto
+    limparValorDeObjetos(formControlsElements, formValidation)
     }
   })
 }
