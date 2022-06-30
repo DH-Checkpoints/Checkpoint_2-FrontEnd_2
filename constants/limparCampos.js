@@ -12,10 +12,7 @@ export const limparValorDeObjetos = (inputParaSerLimpo, objetoParaSerLimpo = '')
 
   //Para limpar o objeto
   Object.keys(objetoParaSerLimpo).forEach(valor => {
-    objetoParaSerLimpo[valor] = ''
+    objetoParaSerLimpo[valor] = false
   })
-
-
-
 
 }
