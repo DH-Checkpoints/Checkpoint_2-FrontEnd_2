@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap');
 
 :root {
-  --primary: #7898FF;
-  --secondary: #8E64C5;
-  --app-grey: #F2F2F2;
+  --primary: #7898ff;
+  --secondary: #8e64c5;
+  --app-grey: #f2f2f2;
 }
 
 * {
@@ -13,7 +13,7 @@
 }
 
 body {
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   min-height: 100vh;
 }
 
@@ -21,4 +21,36 @@ button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
+}
+
+.loading {
+  background-color: rgba(175, 176, 177, 0.6);
+  
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  transition: 1s ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading span{
+  animation: is-rotating 1s infinite;
+  border:7px var(--primary) solid;
+  width: 50px;
+  height: 50px;
+  z-index: 11;
+opacity: none;
+border-radius: 100% ;
+border-top-color: var(--secondary);
+
+}
+
+
+@keyframes is-rotating {
+  to {
+    transform: rotate(1turn);
+  }
 }
