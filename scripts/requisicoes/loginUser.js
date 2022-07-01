@@ -27,6 +27,12 @@ const loginUser = objetoUsuario => {
             showConfirmButton: false,
             timer: 1500
           })
+          localStorage.setItem('token', data.jwt)
+          
+          setTimeout(()=>{
+            window.location = '/tarefas.html'
+           },1501);
+          
         }
         if (response.status === 400) {
           Swal.fire(
