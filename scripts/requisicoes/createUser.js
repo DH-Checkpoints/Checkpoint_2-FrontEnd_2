@@ -1,20 +1,27 @@
+// ---------------------------------------------------------------------------//
+///// IMPORTAÇÕES DE CONSTANTES - Valores imutáveis e que são repetitivos em todo o código.
+
 //Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
+//Importando cabeçaho para API
+import requestHeader from '../../constants/headerRequest.js'
+// IMportando o loading 
 import { loading } from '../../constants/loading.js'
 
-const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
-  let requestHeader = {
-    Accept: 'Application/json',
-    'Content-Type': 'application/json'
-  }
+// ---------------------------------------------------------------------------//
 
-  let requestPostConfiguration = {
+
+
+
+const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
+
+  let requestConfiguration = {
     method: 'POST',
     headers: requestHeader,
     body: JSON.stringify(dadosObjetoUsuario)
   }
 
-  fetch(`${BASE_URL}/users`, requestPostConfiguration).then(response => {
+  fetch(`${BASE_URL}/users`, requestConfiguration).then(response => {
     response.json().then(info => {
       loading()
       if (response.ok) {
