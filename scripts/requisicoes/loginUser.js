@@ -15,11 +15,11 @@ const loginUser = objetoUsuario => {
 
   fetch(`${BASE_URL}/users/login`, requestPostUserConfiguration).then(
     response => {
-      console.log(response)
+
       response.json().then(data => {
         loading()
         if (response.status === 201) {
-          console.log('Cabra existe')
+          
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -40,7 +40,7 @@ const loginUser = objetoUsuario => {
             'Senha errada',
             'error'
           )
-          console.log('Senha errada')
+          
         }
         if (response.status === 404) {
           Swal.fire({
@@ -64,7 +64,7 @@ const loginUser = objetoUsuario => {
             'Temos um probleminha aqui!',
             'warning'
           )
-          console.log('erro servidor')
+          
         }
 
       })
@@ -74,17 +74,3 @@ const loginUser = objetoUsuario => {
 
 export default loginUser
 
-/* 
-
-/////// informações de resposta da API
-body: (…)
-bodyUsed: true
-headers: Headers {}
-ok: true
-redirected: false
-status: 201
-statusText: "Created"
-type: "cors"
-url: "https://ctd-todo-api.herokuapp.com/v1/users/login"
-[[Prototype]]: Response
- */
