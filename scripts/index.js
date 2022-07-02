@@ -18,11 +18,19 @@ let formValidationLogin = {
 const index = () => {
   for (let control of inputElement) {
     const controlInputElement = control.children[1]
-
+    
     controlInputElement.addEventListener('keyup', event => {
       let inputValid = event.target.checkValidity()
       let inputValue = event.target.value
+      console.log(controlInputElement.value)
 
+      
+      if (inputValid) {
+        control.classList.remove('error')
+      } else {
+        control.classList.add('error')
+      }
+      
       if (inputValid) {
         formValidationLogin[event.target.id] = inputValid
         formValidationLogin[event.target.id] = inputValue
