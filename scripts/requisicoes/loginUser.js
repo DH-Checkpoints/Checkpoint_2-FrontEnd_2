@@ -1,5 +1,6 @@
 //Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
+import { loading } from '../../constants/loading.js'
 
 const loginUser = objetoUsuario => {
   let requestHeader = {
@@ -16,6 +17,7 @@ const loginUser = objetoUsuario => {
     response => {
       console.log(response)
       response.json().then(data => {
+        loading()
         if (response.status === 201) {
           console.log('Cabra existe')
           Swal.fire({
@@ -25,6 +27,12 @@ const loginUser = objetoUsuario => {
             showConfirmButton: false,
             timer: 1500
           })
+          localStorage.setItem('token', data.jwt)
+          
+          setTimeout(()=>{
+            window.location = '/tarefas.html'
+           },1501);
+          
         }
         if (response.status === 400) {
           Swal.fire(

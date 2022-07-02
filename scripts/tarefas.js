@@ -1,9 +1,21 @@
+import userGetMe from "./requisicoes/userGetMe.js"
+
+const token = localStorage.getItem('token')
+
 
 
 
 const tarefas = () => {
+  
+  if(token === null){
+  
+    alert('tem algo errado aqui')
+    window.location = '/index.html'
+    
+  }
 
-  console.log('Página de tarefas')
+  userGetMe()
+
 }
 
 export default tarefas
