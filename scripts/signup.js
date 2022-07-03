@@ -52,11 +52,14 @@ const signup = () => {
         }
       }
     })
+    
+    //Evento de click no botão para mostrar a senha
     viewPasswordElement.addEventListener('click', event =>{
       if(controlInputElement.type === 'password'){
         controlInputElement.type = 'text'
       }
       else{
+        
         controlInputElement.type = 'password'
       }
     })
