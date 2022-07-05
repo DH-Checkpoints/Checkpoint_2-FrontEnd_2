@@ -1,9 +1,12 @@
-  //------------------------------------------- IMPORTAÇÕES
+//------------------------------------------- IMPORTAÇÕES
 import userGetMe from './requisicoes/userGetMe.js'
 
 //------------------------------------------- VARIÁVEIS LOCAIS
 
 const token = localStorage.getItem('token')
+
+// Botão de logout (sair da apliacação)
+const finalizarSessao = document.querySelector('#closeApp')
 
 //------------------------------------------- INÍCIO FUNÇÃO PARA CONTROLAR OS DADOS
 
@@ -26,7 +29,7 @@ const tarefas = () => {
     </div>    
     `
 
-  //------------------------------------------- ENVIANDO PARA A PÁGINA DE LOGIN SE TECLAR OU CLICAR 
+    //------------------------------------------- ENVIANDO PARA A PÁGINA DE LOGIN SE TECLAR OU CLICAR
     document.body.addEventListener('click', event => {
       window.location.href = '../index.html'
     })
@@ -36,6 +39,27 @@ const tarefas = () => {
   }
 
   userGetMe()
+
+  //------------------------------------------- LOGOUT - USUÁRIO ENCERRA O SISTEMA
+  finalizarSessao.addEventListener('click', event => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1200,
+      timerProgressBar: true
+    })
+
+    Toast.fire({
+      icon: 'success',
+      title: `Tchau ${localStorage.getItem('nome')} 👋`,
+      text: 'Até a próxima'
+    })
+    setTimeout(() => {
+      localStorage.clear()
+      window.location = '/index.html'
+    }, 1501)
+  })
 }
 
 export default tarefas
