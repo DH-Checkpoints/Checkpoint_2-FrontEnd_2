@@ -29,16 +29,15 @@ const index = () => {
         formValidationLogin.email = formValidationLogin.email.toLowerCase()
 
         control.classList.remove('error')
-        loginUserButtonElement.disabled = false
       } else {
         control.classList.add('error')
       }
       //Habilitando o botão após os campos estarem validados
-      if(formValidationLogin.email && formValidationLogin.password){
+    if(formValidationLogin.email && formValidationLogin.password){
       loginUserButtonElement.disabled = false
     }
-
     })
+    
   }
 
 //------------------------------------------- FUNÇÃO DE CLIQUE NO BOTÃO
