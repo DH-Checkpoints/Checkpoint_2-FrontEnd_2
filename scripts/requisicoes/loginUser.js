@@ -1,5 +1,6 @@
 //Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
+import { loading } from '../../constants/loading.js'
 
 const loginUser = objetoUsuario => {
   let requestHeader = {
@@ -14,10 +15,11 @@ const loginUser = objetoUsuario => {
 
   fetch(`${BASE_URL}/users/login`, requestPostUserConfiguration).then(
     response => {
-      console.log(response)
+
       response.json().then(data => {
+        loading()
         if (response.status === 201) {
-          console.log('Cabra existe')
+          
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -25,6 +27,12 @@ const loginUser = objetoUsuario => {
             showConfirmButton: false,
             timer: 1500
           })
+          localStorage.setItem('token', data.jwt)
+          
+          setTimeout(()=>{
+            window.location = '/tarefas.html'
+           },1501);
+          
         }
         if (response.status === 400) {
           Swal.fire(
@@ -32,7 +40,7 @@ const loginUser = objetoUsuario => {
             'Senha errada',
             'error'
           )
-          console.log('Senha errada')
+          
         }
         if (response.status === 404) {
           Swal.fire({
@@ -56,7 +64,7 @@ const loginUser = objetoUsuario => {
             'Temos um probleminha aqui!',
             'warning'
           )
-          console.log('erro servidor')
+          
         }
 
       })
@@ -66,17 +74,3 @@ const loginUser = objetoUsuario => {
 
 export default loginUser
 
-/* 
-
-/////// informações de resposta da API
-body: (…)
-bodyUsed: true
-headers: Headers {}
-ok: true
-redirected: false
-status: 201
-statusText: "Created"
-type: "cors"
-url: "https://ctd-todo-api.herokuapp.com/v1/users/login"
-[[Prototype]]: Response
- */
