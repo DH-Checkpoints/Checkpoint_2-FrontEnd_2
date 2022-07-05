@@ -21,6 +21,11 @@ const userGetMe = () => {
 
       const firstName = data.firstName[0].toUpperCase()
       const lastName = data.lastName[0].toUpperCase()
+
+      localStorage.setItem('nome', data.firstName )
+      localStorage.setItem('sobrenome', data.lastName )
+      localStorage.setItem('email', data.email )
+      localStorage.setItem('id', data.id )
       
       nomeUsuarioElement.innerHTML = `${data.firstName}`
 
