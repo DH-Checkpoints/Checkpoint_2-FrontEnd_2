@@ -1,9 +1,13 @@
+//------------------------------------------- IMPORTAÇÕES
 //Importando a função de criar usuaŕios
 import createUSer from './requisicoes/createUser.js'
 //importando função para limpar os campos
 import { limparValorDeObjetos } from '../constants/limparCampos.js'
 //importando o loading
-import {loading} from '../constants/loading.js'
+import { loading } from '../constants/loading.js'
+
+
+//------------------------------------------- VARIÁVEIS LOCAIS
 
 
 // Selecionando as divs que contém a classe form-control
@@ -21,30 +25,32 @@ var formValidation = {
   passwordConfirm: false
 }
 
+//------------------------------------------- INÍCIO FUNÇÃO PARA CONTROLAR OS DADOS
+
+
 const signup = () => {
-  // function signup(){
 
   for (let control of formControlsElements) {
     const controlInputElement = control.children[1]
 
     controlInputElement.addEventListener('keyup', event => {
       let inputValid = event.target.checkValidity()
+      //Armazenando o valor a propriedade no objeto
       let inputValue = event.target.value
 
       if (inputValid) {
         // Removendo os espaços antes e depois com o metodo trim()
         formValidation[event.target.id] = inputValue.trim()
-      }
-
-      if (inputValid) {
         control.classList.remove('error')
       } else {
+        createUserButtonElement.disabled = true
         control.classList.add('error')
       }
-
+        //Comparação dos valores inseridos nos inputs.
       if (controlInputElement.id === 'passwordConfirm') {
         if (controlInputElement.value != formValidation['password']) {
           control.classList.add('error')
+          createUserButtonElement.disabled = true
         } else {
           createUserButtonElement.disabled = false
           createUserButtonElement.focus()
@@ -53,7 +59,7 @@ const signup = () => {
     })
   }
 
-  ///// EVENTO DE CLIQUE NO BOTÃO
+  //------------------------------------------- EVENTO DE CLIQUE NO BOTÃO
 
   createUserButtonElement.addEventListener('click', event => {
     event.preventDefault()
@@ -61,12 +67,10 @@ const signup = () => {
     // Para verificar se todos os valores estao true/Válido
     let formValid = Object.values(formValidation).every(Boolean)
 
-
-    loading();
-
+    //Inicia o login, e após a requisição for conclída, é removido
+    loading()
 
     if (formValid) {
-      
       // Guardando o email em caixa baixa:
       formValidation.email = formValidation.email.toLowerCase()
 
@@ -77,9 +81,8 @@ const signup = () => {
       //Enviando os dados para a requisição criar o usuário
       createUSer(formValidation, createUserButtonElement)
 
-
-    //Função para limpar os campos e o objeto
-    limparValorDeObjetos(formControlsElements, formValidation)
+      //Função para limpar os campos e o objeto
+      limparValorDeObjetos(formControlsElements, formValidation)
     }
   })
 }
