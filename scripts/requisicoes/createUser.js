@@ -22,7 +22,7 @@ const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
       if (response.ok) {
         Swal.fire({
           title: 'Usuário cadastrado com sucesso',
-          text: 'Deseja fazer o login?',
+          text: 'Bora começar a criar suas tarefas?',
           icon: 'success',
           showCancelButton: true,
           confirmButtonColor: '#3cc45e',
@@ -31,7 +31,9 @@ const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
           cancelButtonText: 'Não   (criar novo usuário)    😃'
         }).then(result => {
           if (result.isConfirmed) {
-            window.location = '/index.html'
+            //Condiçõ para o usuário ir diretamente para as tarefas
+            localStorage.setItem('token', info.jwt)
+            window.location = '/tarefas.html'
           }
           else{
             window.location.reload()

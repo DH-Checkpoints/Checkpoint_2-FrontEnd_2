@@ -5,7 +5,8 @@ import createUSer from './requisicoes/createUser.js'
 import { limparValorDeObjetos } from '../constants/limparCampos.js'
 //importando o loading
 import { loading } from '../constants/loading.js'
-
+//importando função para formatar o nome e sobrenome
+import primeiraEmMaiusculo from '../constants/formatName.js'
 
 //------------------------------------------- VARIÁVEIS LOCAIS
 
@@ -45,6 +46,11 @@ const signup = () => {
       if (inputValid) {
         // Removendo os espaços antes e depois com o metodo trim()
         formValidation[event.target.id] = inputValue.trim()
+
+        // Formatando o nome 
+        formValidation.firstName = primeiraEmMaiusculo(formValidation.firstName)
+        formValidation.lastName = primeiraEmMaiusculo(formValidation.lastName)
+
         control.classList.remove('error')
       } else {
         createUserButtonElement.disabled = true
