@@ -256,16 +256,12 @@ a {
   }
 }
 
-.teste {
-  
- /* background: linear-gradient(var(--primary), var(--secondary)); */
- background: linear-gradient(0deg, #b4c6ff, #7898ff, #ab7fe4, #7645b7);
- /* background-size: 400% 400%; */
- animation: gradient 15s ease infinite;
+.paginaErro {
+  background-image: url('https://i.gifer.com/origin/f9/f9af81d304eaa79cbee75f39d14fec10.gif');
+  background-size: cover;
+  background-position: center;
 
- background-image: url('https://i.gifer.com/origin/f9/f9af81d304eaa79cbee75f39d14fec10.gif');
- background-size: 100%;
- background-repeat: no-repeat;
+  background-repeat: no-repeat;
 
   position: absolute;
   z-index: 100;
@@ -274,40 +270,26 @@ a {
 
   display: flex;
   align-items: center;
-  
+
   flex-direction: column;
 
   color: #fff;
 }
 
-.teste .content{
-
-margin-top: 50px;
-display: flex;
-flex-direction: column;
-align-items: center;
+.paginaErro .content {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.teste button{
+.paginaErro button {
   padding: 0 20px;
   background-color: #ab7fe4;
-  transition: .5s;
+  transition: 0.5s;
   margin-top: 20px;
 }
 
-.teste button:hover{
+.paginaErro button:hover {
   background-color: #7645b7;
-
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
