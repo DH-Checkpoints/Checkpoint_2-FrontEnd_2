@@ -16,6 +16,10 @@ const formControlsElements = document.querySelectorAll('.form-control')
 // Selecionando o botão para criar novo usuário
 const createUserButtonElement = document.querySelector('#createUserButton')
 
+// Selecionando botrão para mostrar a senha
+
+const viewPasswordElement = document.querySelector('#viewPassword')
+
 // Objeto para armazenar os dados dos inputs
 var formValidation = {
   firstName: false,
@@ -55,6 +59,17 @@ const signup = () => {
           createUserButtonElement.disabled = false
           createUserButtonElement.focus()
         }
+      }
+    })
+    
+    //Evento de click no botão para mostrar a senha
+    viewPasswordElement.addEventListener('click', event =>{
+      if(controlInputElement.type === 'password'){
+        controlInputElement.type = 'text'
+      }
+      else{
+        
+        controlInputElement.type = 'password'
       }
     })
   }
