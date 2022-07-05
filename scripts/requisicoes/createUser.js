@@ -1,6 +1,4 @@
-// ---------------------------------------------------------------------------//
-///// IMPORTAÇÕES DE CONSTANTES - Valores imutáveis e que são repetitivos em todo o código.
-
+//------------------------------------------- IMPORTAÇÕES
 //Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
 //Importando cabeçaho para API
@@ -8,11 +6,8 @@ import requestHeader from '../../constants/headerRequest.js'
 // IMportando o loading 
 import { loading } from '../../constants/loading.js'
 
-// ---------------------------------------------------------------------------//
 
-
-
-
+//------------------------------------------- INÍCIO FUNÇÃO PARA CONTROLAR E ENVIAR OS DADOS PARA A API
 const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
 
   let requestConfiguration = {
@@ -38,9 +33,11 @@ const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
           if (result.isConfirmed) {
             window.location = '/index.html'
           }
+          else{
+            window.location.reload()
+          }
         })
 
-        console.log('foi, agora se vira')
       } else {
         if (info === 'El usuario ya se encuentra registrado') {
           Swal.fire({
