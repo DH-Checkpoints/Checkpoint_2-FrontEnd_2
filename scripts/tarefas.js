@@ -1,21 +1,35 @@
 //------------------------------------------- IMPORTAÇÕES
+import getTasks from './requisicoes/getTasks.js'
+import createTask from './requisicoes/createTasks.js'
 import userGetMe from './requisicoes/userGetMe.js'
 
 //------------------------------------------- VARIÁVEIS LOCAIS
 
 const token = localStorage.getItem('token')
 
+//Pegando o input de add nova tarefa
+const novaTarefaInputElement = document.querySelector('#novaTarefaInput')
+//Pegando o botão de add nova tarefa
+const novaTarefaButtonElement = document.querySelector('#novaTarefaButton')
 // Botão de logout (sair da apliacação)
 const finalizarSessao = document.querySelector('#closeApp')
 
-//------------------------------------------- INÍCIO FUNÇÃO PARA CONTROLAR OS DADOS
+let novaTarefa = {
+  description: '',
+  completed: false
+}
 
-const tarefas = () => {
+
+
+
+ //------------------------------------------- INÍCIO FUNÇÃO PARA CONTROLAR OS DADOS
+
+const verificaStatus = () =>{
   if (token === null) {
     // Caso o usuario tente acessar a página de tarefas sem fazer o login
     // Será criada as propridades abaixo.
     // A estilização foi feita no css de tarefas
-
+    
     document.body.innerHTML = `
     
     <div class="paginaErro">
@@ -37,8 +51,42 @@ const tarefas = () => {
       window.location.href = '../index.html'
     })
   }
+}
+
+
+
+//------------------------------------------- INÍCIO FUNÇÃO PARA CONTROLAR OS DADOS
+const tarefas = () => {
+ 
+  verificaStatus()
 
   userGetMe()
+
+  getTasks()
+
+  novaTarefaButtonElement.addEventListener('click', event => {
+    event.preventDefault()
+
+    if (novaTarefaInputElement.value == '') {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Epa',
+        text: 'Faltou uma tarefinha',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    } else {
+      //Armazenando o valor a propriedade no objeto
+      novaTarefa.description = novaTarefaInputElement.value
+      
+      //createTasks(novaTarefa)
+      
+      createTask(novaTarefa)
+      novaTarefaInputElement.value = ''
+    }
+    
+  })
 
   //------------------------------------------- LOGOUT - USUÁRIO ENCERRA O SISTEMA
   finalizarSessao.addEventListener('click', event => {
