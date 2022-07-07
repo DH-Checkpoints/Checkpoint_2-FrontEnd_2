@@ -2,6 +2,7 @@
 import loginUser from './requisicoes/loginUser.js'
 import { loading } from '../constants/loading.js'
 import { limparValorDeObjetos } from '../constants/limparCampos.js'
+import verSenha from '../constants/mostrarSenha.js'
 
 //------------------------------------------- VARIÁVEIS LOCAIS
 // Selecionando o botão para fazer login
@@ -39,6 +40,9 @@ const index = () => {
     })
     
   }
+
+  //função para mostrar a senha
+verSenha()
 
 //------------------------------------------- FUNÇÃO DE CLIQUE NO BOTÃO
 
