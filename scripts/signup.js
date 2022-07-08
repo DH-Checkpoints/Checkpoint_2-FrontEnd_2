@@ -7,6 +7,8 @@ import { limparValorDeObjetos } from '../constants/limparCampos.js'
 import { loading } from '../constants/loading.js'
 //importando função para formatar o nome e sobrenome
 import primeiraEmMaiusculo from '../constants/formatName.js'
+//importando a função para mostrar a senha
+import verSenha from '../constants/mostrarSenha.js'
 
 //------------------------------------------- VARIÁVEIS LOCAIS
 
@@ -17,9 +19,7 @@ const formControlsElements = document.querySelectorAll('.form-control')
 // Selecionando o botão para criar novo usuário
 const createUserButtonElement = document.querySelector('#createUserButton')
 
-// Selecionando botrão para mostrar a senha
 
-const viewPasswordElement = document.querySelector('#viewPassword')
 
 // Objeto para armazenar os dados dos inputs
 var formValidation = {
@@ -67,18 +67,11 @@ const signup = () => {
         }
       }
     })
-    
-    //Evento de click no botão para mostrar a senha
-    viewPasswordElement.addEventListener('click', event =>{
-      if(controlInputElement.type === 'password'){
-        controlInputElement.type = 'text'
-      }
-      else{
-        
-        controlInputElement.type = 'password'
-      }
-    })
   }
+  //função para mostrar a senha
+  verSenha()
+
+
 
   //------------------------------------------- EVENTO DE CLIQUE NO BOTÃO
 
