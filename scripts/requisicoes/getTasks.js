@@ -57,6 +57,16 @@ const getTasks = () => {
         }
       }
 
+
+//------------------------------------------- BOTÃO PARA CONCLUIR TAREFA
+      const completeTarefaCheckboxes = document.querySelectorAll('.not-done')
+      completeTarefaCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', event => {
+          alterTasks(event.target.dataset.id, event.target.dataset.completed)
+        })
+      })
+
+
 //------------------------------------------- BOTÃO PARA EXCLUIR TAREFA
       const deleteTarefaButtonElement =
         document.querySelectorAll('.deleteTaskButton')
