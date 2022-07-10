@@ -1,10 +1,9 @@
 //------------------------------------------- IMPORTAÇÕES
-//Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
-//Importando cabeçaho para API
 import requestHeader from '../../constants/headerRequest.js'
 import deleteTask from './deleteTask.js'
 
+//------------------------------------------- VARIÁVEIS LOCAIS
 const token = localStorage.getItem('token')
 const skeletonElements = document.querySelector('#skeleton')
 const tarefasPendentesElements = document.querySelector('.tarefas-pendentes')
@@ -17,6 +16,7 @@ let requestConfiguration = {
   }
 }
 
+//------------------------------------------- INÍCIO FUNÇÃO
 const getTasks = () => {
   fetch(`${BASE_URL}/tasks`, requestConfiguration).then(response => {
     response.json().then(tasks => {
@@ -32,9 +32,10 @@ const getTasks = () => {
           year: 'numeric'
         })
 
-        tarefasPendentesElements.innerHTML += `
+        if (!task.completed) {
+          tarefasPendentesElements.innerHTML += `
         <li class="tarefa">
-          <div class="not-done"></div>
+          <div class="not-done"  data-id="${task.id}" data-completed="${task.completed}"></div>
             <div class="descricao" >
                 <p class="nome" >${task.description}</p>
                 <p class="timestamp">${dataFormatada}</p>
@@ -42,7 +43,31 @@ const getTasks = () => {
             </div>
         </li> 
         `
+        } else {
+          tarefasConcluidasElements.innerHTML += `
+          <li class="tarefa">
+            <div class="not-done"  data-id="${task.id}" data-completed="${task.completed}"></div>
+              <div class="descricao" >
+                  <p class="nome" >${task.description}</p>
+                  <p class="timestamp">${dataFormatada}</p>
+                  <button  data-id="${task.id}" class="deleteTaskButton">del</button>
+              </div>
+          </li> 
+            `
+        }
       }
+
+
+//------------------------------------------- BOTÃO PARA CONCLUIR TAREFA
+      const completeTarefaCheckboxes = document.querySelectorAll('.not-done')
+      completeTarefaCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', event => {
+          alterTasks(event.target.dataset.id, event.target.dataset.completed)
+        })
+      })
+
+
+//------------------------------------------- BOTÃO PARA EXCLUIR TAREFA
       const deleteTarefaButtonElement =
         document.querySelectorAll('.deleteTaskButton')
       deleteTarefaButtonElement.forEach(button => {
