@@ -18,14 +18,30 @@ const deleteTask = idTask => {
 
 
   fetch(`${BASE_URL}/tasks/${idTask}`, requestConfiguration).then(response => {
-    response.json().then(deleteTask => {
+    response.json().then(del => {
+     if(response.ok){
+      Swal.fire(
+        'Tarefa excluída!',
+        'A tarefa foi ecluída com sucesso.',
+        'success'
+      )    
+      console.log(`
+      ${del}
+      ${response.statusText}`)
+     }
+
+     if(response.status === 500){
       Swal.fire(
         'Deleted!',
         'Your file has been deleted.',
         'success'
       )    
-         
-      console.log(deleteTask)
+      console.log(`
+      ${del}
+      ${response.statusText}`)
+     }
+
+
     })
   }) 
 
