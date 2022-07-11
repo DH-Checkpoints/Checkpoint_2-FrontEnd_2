@@ -15,8 +15,8 @@ if (
 ) {
   index()
 } else if (
-  location.pathname === '/tarefas.html' 
-  // || location.pathname === '/Checkpoint_2-FrontEnd_2/tarefas.html'
+  // location.pathname === '/tarefas.html'  ||
+   location.pathname === '/Checkpoint_2-FrontEnd_2/tarefas.html'
 ) {
   tarefas()
 }
