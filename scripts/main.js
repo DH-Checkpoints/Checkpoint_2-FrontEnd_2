@@ -2,11 +2,22 @@ import signup from './signup.js'
 import index from './index.js'
 import tarefas from './tarefas.js'
 
-if (location.pathname === '/cadastro.html') {
+if (
+  location.pathname === '/cadastro.html' ||
+  location.pathname === '/Checkpoint_2-FrontEnd_2/cadastro.html'
+) {
   signup()
-} else if (location.pathname === '/index.html') {
+} else if (
+  location.pathname === '/index.html' ||
+  location.pathname === '/' ||
+  location.pathname === '/Checkpoint_2-FrontEnd_2/index.html' ||
+  location.pathname === '/Checkpoint_2-FrontEnd_2/'
+) {
   index()
-} else if (location.pathname === '/tarefas.html') {
+} else if (
+  location.pathname === '/tarefas.html' ||
+  location.pathname === '/Checkpoint_2-FrontEnd_2/tarefas.html'
+) {
   tarefas()
 }
 
