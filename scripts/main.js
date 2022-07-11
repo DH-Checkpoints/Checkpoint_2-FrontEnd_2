@@ -3,20 +3,20 @@ import index from './index.js'
 import tarefas from './tarefas.js'
 
 if (
-  location.pathname === '/cadastro.html' 
-  // || location.pathname === '/Checkpoint_2-FrontEnd_2/cadastro.html'
+  location.pathname === '/cadastro.html'
+  || location.pathname === '/Checkpoint_2-FrontEnd_2/cadastro.html'
 ) {
   signup()
 } else if (
   location.pathname === '/index.html' 
-  //|| location.pathname === '/' 
-  //|| location.pathname === '/Checkpoint_2-FrontEnd_2/index.html' 
-  //|| location.pathname === '/Checkpoint_2-FrontEnd_2/'
+  || location.pathname === '/' 
+  || location.pathname === '/Checkpoint_2-FrontEnd_2/index.html' 
+  || location.pathname === '/Checkpoint_2-FrontEnd_2/'
 ) {
   index()
 } else if (
-  // location.pathname === '/tarefas.html'  ||
-   location.pathname === '/Checkpoint_2-FrontEnd_2/tarefas.html'
+  location.pathname === '/tarefas.html'
+  || location.pathname === '/Checkpoint_2-FrontEnd_2/tarefas.html'
 ) {
   tarefas()
 }
