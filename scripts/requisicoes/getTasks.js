@@ -1,12 +1,16 @@
 //------------------------------------------- IMPORTAÇÕES
+//Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
+//Importando cabeçaho para API
 import requestHeader from '../../constants/headerRequest.js'
+import alterTasks from './alterTasks.js'
 import deleteTask from './deleteTask.js'
+import { loading } from '../../constants/loading.js'
 
-//------------------------------------------- VARIÁVEIS LOCAIS
 const token = localStorage.getItem('token')
 const skeletonElements = document.querySelector('#skeleton')
 const tarefasPendentesElements = document.querySelector('.tarefas-pendentes')
+const tarefasConcluidasElements = document.querySelector('.tarefas-terminadas')
 
 let requestConfiguration = {
   method: 'GET',
@@ -16,13 +20,13 @@ let requestConfiguration = {
   }
 }
 
-//------------------------------------------- INÍCIO FUNÇÃO
 const getTasks = () => {
   fetch(`${BASE_URL}/tasks`, requestConfiguration).then(response => {
     response.json().then(tasks => {
       skeletonElements.style.display = 'none'
 
       tarefasPendentesElements.innerHTML = ''
+      tarefasConcluidasElements.innerHTML = ''
 
       for (let task of tasks) {
         const dataCreat = new Date(task.createdAt)
@@ -40,6 +44,7 @@ const getTasks = () => {
                 <p class="nome" >${task.description}</p>
                 <p class="timestamp">${dataFormatada}</p>
                 <button  data-id="${task.id}" class="deleteTaskButton">del</button>
+                <button  data-id="${task.id}" class="alterTaskButton">alteração</button>
             </div>
         </li> 
         `
@@ -57,7 +62,6 @@ const getTasks = () => {
         }
       }
 
-
 //------------------------------------------- BOTÃO PARA CONCLUIR TAREFA
       const completeTarefaCheckboxes = document.querySelectorAll('.not-done')
       completeTarefaCheckboxes.forEach(checkbox => {
@@ -66,10 +70,47 @@ const getTasks = () => {
         })
       })
 
+      // Alterar conteúdo da tarefa
+      const alterTarefaButtonElement =
+        document.querySelectorAll('.alterTaskButton')
 
-//------------------------------------------- BOTÃO PARA EXCLUIR TAREFA
+      alterTarefaButtonElement.forEach(button => {
+        button.addEventListener('click', event => {
+          event.preventDefault()
+
+          Swal.fire({
+            title: 'Insira sua alteração',
+            input: 'text',
+            inputAttributes: {
+              autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Confirmar',
+            showLoaderOnConfirm: true,
+            preConfirm: newTask => {
+              let requestConfiguration = {
+                method: 'PUT',
+                headers: {
+                  ...requestHeader,
+                  authorization: token
+                },
+                body: JSON.stringify({ description: newTask.toString() })
+              }
+
+               fetch(`${BASE_URL}/tasks/${button.dataset.id}`,requestConfiguration).then(response => {
+                if (response.ok) {
+                  getTasks()
+                }
+              })
+            }
+          })
+        })
+      })
+
+      // Deletar tarefa
       const deleteTarefaButtonElement =
         document.querySelectorAll('.deleteTaskButton')
+
       deleteTarefaButtonElement.forEach(button => {
         button.addEventListener('click', event => {
           event.preventDefault()
