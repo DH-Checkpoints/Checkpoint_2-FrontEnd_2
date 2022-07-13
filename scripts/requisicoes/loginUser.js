@@ -30,7 +30,7 @@ const loginUser = objetoUsuario => {
           localStorage.setItem('token', data.jwt)
           
           setTimeout(()=>{
-            location.href = '/tarefas.html'
+            location.href = 'tarefas.html'
            },1501);
           
         }

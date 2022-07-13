@@ -119,6 +119,28 @@ a {
   color: grey;
 }
 
+.buttons-control {
+  display: flex;
+  justify-content: flex-end;
+  width: 50px;
+}
+
+.buttons-control button {
+  width: 50%;
+  background-color: transparent;
+}
+
+.buttons-control img {
+  width: 80%;
+}
+
+.right-info-control{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+
 /* Lista de tarefas ----------------------------------------------------------- */
 
 .tarefas-pendentes {
@@ -292,4 +314,10 @@ a {
 
 .paginaErro button:hover {
   background-color: #7645b7;
+}
+
+.user-image img{
+  height: 35px;
+  position: relative;
+  border-radius: 33px;
 }

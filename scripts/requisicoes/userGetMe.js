@@ -19,17 +19,14 @@ const userGetMe = () => {
   fetch(`${BASE_URL}/users/getMe`, requestConfiguration).then(response => {
     response.json().then(data => {
 
-      const firstName = data.firstName[0].toUpperCase()
-      const lastName = data.lastName[0].toUpperCase()
-
       localStorage.setItem('nome', data.firstName )
       localStorage.setItem('sobrenome', data.lastName )
       localStorage.setItem('email', data.email )
       localStorage.setItem('id', data.id )
       
-      nomeUsuarioElement.innerHTML = `${data.firstName}`
+      nomeUsuarioElement.innerHTML = `${data.firstName} ${data.lastName}`
 
-      fotoUsuarioElement.innerHTML = `${firstName}${lastName}`
+      fotoUsuarioElement.innerHTML = `<img src= "https://randomuser.me/api/portraits/men/${Math.floor(Math.random() * 90)}.jpg" alt="">`
     })
   })
 }
