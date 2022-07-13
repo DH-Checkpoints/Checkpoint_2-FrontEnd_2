@@ -21,13 +21,21 @@
 </div>
 
     <div class="left">
+      <div class="form-header">
+        <p>To-Do App</p>
+      </div>
       <img src="./assets/pessoa-signup.png" alt="" />
     </div>
     <div class="right">
+     
+      <div class="ingressar">
+        <p>Já possui conta?</p>
+        <a href="index.html">Acesse aqui</a>
+      </div>
+     
+
+      <section class="form-right">
       <form>
-        <div class="form-header">
-          <p>To-Do App</p>
-        </div>
 
         <div class="form-control">
           <label for="firstName">Nome: </label>
@@ -58,15 +66,15 @@
           <input type="password" id="passwordConfirm" required/>
           <small>As senhas não são iguais</small>
         </div>
+
         <input type="checkbox" id="viewPassword">Mostrar Senha</input>
 
         <div class="control-button">
           <button id="createUserButton" disabled>Criar conta</button>
         </div>
       </form>
-      <div class="ingressar">
-        <a href="index.html">Já possui conta? Acesse aqui</a>
-      </div>
+      </section>
+
     </div>
 
     <script src="./scripts/main.js" type="module"></script>

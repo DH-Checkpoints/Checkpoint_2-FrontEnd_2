@@ -41,23 +41,35 @@ const getTasks = () => {
         <li class="tarefa">
           <div class="not-done"  data-id="${task.id}" data-completed="${task.completed}"></div>
             <div class="descricao" >
-                <p class="nome" >${task.description}</p>
-                <p class="timestamp">${dataFormatada}</p>
-                <button  data-id="${task.id}" class="deleteTaskButton">del</button>
-                <button  data-id="${task.id}" class="alterTaskButton">alteração</button>
+            <div class="descricao-tarefa">  
+            <p class="nome" >${task.description}</p>
             </div>
+              <div class="right-info-control">
+              <div class="buttons-control">
+              <button  data-id="${task.id}" class="alterTaskButton"><img src="../../assets/alter.png"></button>
+              <button  data-id="${task.id}" class="deleteTaskButton"><img src="../../assets/delete.png"></button>
+              </div>
+              <p class="timestamp">${dataFormatada}</p>
+            </div>
+          </div>
         </li> 
         `
         } else {
           tarefasConcluidasElements.innerHTML += `
-          <li class="tarefa">
-            <div class="not-done"  data-id="${task.id}" data-completed="${task.completed}"></div>
-              <div class="descricao" >
-                  <p class="nome" >${task.description}</p>
-                  <p class="timestamp">${dataFormatada}</p>
-                  <button  data-id="${task.id}" class="deleteTaskButton">del</button>
+        <li class="tarefa">
+          <div class="not-done"  data-id="${task.id}" data-completed="${task.completed}"></div>
+            <div class="descricao" >
+            <div class="descricao-tarefa">  
+            <p class="nome" >${task.description}</p>
+            </div>
+              <div class="right-info-control">
+              <div class="buttons-control">
+              <button  data-id="${task.id}" class="deleteTaskButton"><img src="../../assets/delete.png"></button>
               </div>
-          </li> 
+              <p class="timestamp">${dataFormatada}</p>
+            </div>
+          </div>
+        </li> 
             `
         }
       }

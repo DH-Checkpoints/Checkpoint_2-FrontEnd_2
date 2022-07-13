@@ -44,14 +44,16 @@ a {
   letter-spacing: 2px;
   font-weight: 900;
 }
-
+.user-info img {
+  height: 2em;
+  width: 2em;
+}
 #closeApp {
   margin-left: 15px;
-  font-size: 0.7em;
+
   background-color: rgb(218, 88, 88);
   color: white;
   border-radius: 50vh;
-  padding: 5px 10px;
   cursor: pointer;
 }
 
@@ -154,7 +156,7 @@ a {
 .tarefa {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.8em;
 }
 
 .tarefa .not-done {
@@ -166,6 +168,25 @@ a {
   border: 2px solid var(--secondary);
   z-index: 2;
   transition: background-color 200ms linear;
+}
+
+.right-info-control {
+  display: flex;
+  flex-direction: column;
+}
+.buttons-control {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+}
+
+.buttons-control button {
+  width: 150%;
+  background-color: transparent;
+}
+
+.buttons-control img {
+  width: 80%;
 }
 
 .tarefa .not-done:hover {
@@ -316,8 +337,121 @@ a {
   background-color: #7645b7;
 }
 
+<<<<<<< HEAD
 .user-image img{
   height: 35px;
   position: relative;
   border-radius: 33px;
 }
+=======
+/*=============== BREACKPOINTS ===============*/
+
+@media (max-width: 915px) {
+  body {
+    width: 100%;
+    height: 100vh;
+  }
+
+header{
+  padding: 0 20px;
+}
+
+
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .nova-tarefa {
+    width: 90%;
+    margin: 0;
+  }
+
+  .nova-tarefa button {
+    margin: 0;
+  }
+
+  .nova-tarefa input[type='text'] {
+    padding: 0;
+    font-size: 0.8em;
+    padding: 10px;
+  }
+
+  /*=========== tarefas pendentes*/
+
+  .tarefas-pendentes {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tarefa .descricao {
+    max-width: 100%;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 0.5em;
+    box-shadow: 2px 2px 5px lightgrey;
+  }
+
+  .tarefa .nome {
+    color: rgb(95, 95, 95);
+  }
+
+  .tarefa .timestamp {
+    font-size: 0.6em;
+    color: rgb(134, 134, 134);
+  }
+
+  .descricao-tarefa {
+    width: 90%;
+    height: auto;
+  }
+
+  .right-info-control {
+    display: flex;
+    flex-direction: column;
+  }
+  .buttons-control {
+    display: flex;
+    justify-content: flex-end;
+    width: 50px;
+  }
+
+  .buttons-control button {
+    width: 50%;
+    background-color: transparent;
+  }
+
+  .buttons-control img {
+    width: 80%;
+  }
+
+  /* ============ tarefas terminadas */
+
+  .titulo-terminadas {
+    position: relative;
+    font-weight: 900;
+    font-size: 1.1em;
+    margin-left:0;
+    
+    width: 88%;
+    display: flex;
+    justify-content: space-between;
+
+  }
+  
+  .tarefas-terminadas {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+
+
+}
+>>>>>>> 7c00d6ff4737c3ed35b386575d411936e6e6c23b

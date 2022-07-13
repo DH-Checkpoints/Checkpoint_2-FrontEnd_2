@@ -1,13 +1,13 @@
 @import url('./common.css');
 
-body{
+body {
   display: flex;
 }
 
 h1 {
   color: rgb(116, 116, 116);
   font-weight: 300;
-  margin: .5em 0;
+  margin: 0.5em 0;
 }
 
 form {
@@ -26,20 +26,19 @@ form {
 form:after {
   position: absolute;
   content: '';
-  width: .7em;
+  width: 0.7em;
   height: 100%;
   top: 0;
   left: 0;
   background: linear-gradient(var(--primary), var(--secondary));
 }
 
-
 input {
   width: 100%;
-  padding: .4em .5em;
+  padding: 0.4em 0.5em;
   background-color: var(--app-grey);
   border: 1px solid var(--app-grey);
-  border-radius: .2em;
+  border-radius: 0.2em;
 }
 
 input:focus {
@@ -47,18 +46,16 @@ input:focus {
   border: 1px solid lightgrey;
 }
 
-
-
 label {
   width: 100%;
   font-weight: 300;
-  margin-bottom: -.1em;
+  margin-bottom: -0.1em;
   margin-top: 1em;
-  font-size: .8em;
+  font-size: 0.8em;
 }
 
 button {
-  padding: .5em 3em;
+  padding: 0.5em 3em;
   background-color: var(--primary);
   color: white;
   margin-top: 2em;
@@ -66,7 +63,7 @@ button {
   font-size: 1em;
 }
 
-button:disabled{
+button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
@@ -75,31 +72,61 @@ button:disabled{
   color: grey;
   font-size: 2em;
 }
-.ingressar{
+.ingressar {
   text-align: center;
+  width: 100%;
+  position: relative;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
-.left{
-  width: 50%;  
+
+.ingressar a {
+  color: var(--app-grey);
+  background-color: var(--primary);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 0 2rem 0 0.5rem;
+  text-decoration: none;
+}
+
+.ingressar a:hover{
+
+  background-color:#7892ea ;
+}
+
+.left {
+  width: 50%;
   background-color: white;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
-.left img{
-  width:80%;
+.left img {
+  width: 80%;
 }
-.right{
+.right {
   width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.form-right {
+  height: 90vh;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
 /* ===== PARA O CASO DE ERRO NO INPUT ===== */
 .form-control small {
-  color: rgb(218, 46, 46);
+  color: rgb(245, 115, 115);
   opacity: 0;
 }
 
@@ -109,12 +136,146 @@ button:disabled{
 }
 
 .form-control.error input {
-  background-color: rgb(198, 103, 103);
-  border: 1px solid rgb(218, 46, 46);
+  background-color: rgb(245, 115, 115);
+  border: 1px solid rgb(243, 81, 81);
 }
-.eye{
+.eye {
   height: 20px;
   position: absolute;
   bottom: 105px;
-  left: 80%; 
+  left: 85%;
+}
+
+
+/*=============== BREACKPOINTS ===============*/
+
+@media (max-width: 915px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+
+    background: linear-gradient(-45deg, #257795, #1b95b3, #8f60cc, #714ba2);
+    background-size: 400% 400%;
+    animation: gradient 4s ease infinite;
+  }
+
+  h1 {
+    color: rgb(116, 116, 116);
+    font-weight: 300;
+  }
+
+  form {
+    width: 90%;
+    max-height: 80vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    margin-bottom: 2rem;
+    padding: 3rem 2.5rem;
+
+    box-shadow: 0 5px 80px -10px hsla(0, 0%, 0%, 0.48);
+
+    border-radius: 15px;
+  }
+
+  form:after {
+    background: none;
+  }
+
+  .div-labels {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 10px;
+  }
+  label {
+    font-size: 1rem;
+  }
+
+  .form-header {
+    color: rgb(129, 129, 129);
+    font-size: 3rem;
+    font-weight: 900;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-header.cadastro {
+    color: #fff;
+  }
+  .cadastro {
+    position: absolute;
+    top: -80px;
+  }
+
+  .cadastro small {
+    position: absolute;
+    top: 40px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 8.2px;
+
+    color: #fff;
+  }
+
+  .ingressar {
+    text-align: center;
+    font-size: .8rem;
+  }
+
+  .right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left {
+    display: none;
+  }
+
+
+  .eye {
+    height: 15px;
+    position: absolute;
+    bottom: 140px;
+    left: 85%;
+  }
+
+}
+
+/*========= ANIMAÇÃO BACKGROUND */
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 375px) {
+  label {
+    font-size: 0.8rem;
+  }
+
+  .form-header {
+    color: grey;
+    font-size: 2.5rem;
+    margin: 5px 0;
+  }
+  .ingressar {
+    text-align: center;
+    font-size: 1.2rem;
+  }
 }
