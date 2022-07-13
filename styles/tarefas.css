@@ -121,6 +121,28 @@ a {
   color: grey;
 }
 
+.buttons-control {
+  display: flex;
+  justify-content: flex-end;
+  width: 50px;
+}
+
+.buttons-control button {
+  width: 50%;
+  background-color: transparent;
+}
+
+.buttons-control img {
+  width: 80%;
+}
+
+.right-info-control{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+
 /* Lista de tarefas ----------------------------------------------------------- */
 
 .tarefas-pendentes {
@@ -315,6 +337,13 @@ a {
   background-color: #7645b7;
 }
 
+<<<<<<< HEAD
+.user-image img{
+  height: 35px;
+  position: relative;
+  border-radius: 33px;
+}
+=======
 /*=============== BREACKPOINTS ===============*/
 
 @media (max-width: 915px) {
@@ -425,3 +454,4 @@ header{
 
 
 }
+>>>>>>> 7c00d6ff4737c3ed35b386575d411936e6e6c23b
