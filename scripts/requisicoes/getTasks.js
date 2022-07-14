@@ -18,21 +18,18 @@ let requestConfiguration = {
   }
 }
 
-
 //------------------------------------------- Início da função para trazer as tasks
 const getTasks = () => {
   fetch(`${BASE_URL}/tasks`, requestConfiguration).then(response => {
     response.json().then(tasks => {
       skeletonElements.style.display = 'none'
 
-//------------------------------------------- Limpando o html para receber as tasks
-      
-if(!tasks.completed){
-  tarefasPendentesElements.innerHTML = '<p class="empty"> Empty </p>'
-}
-//------------------------------------------- Iniciando a distribuição através do for
+      //------------------------------------------- Limpando o HTML antes de inserir
+      tarefasPendentesElements.innerHTML = ''
+      tarefasConcluidasElements.innerHTML = ''
+
+      //------------------------------------------- Iniciando a distribuição através do for
       for (let task of tasks) {
-        
         const dataCreat = new Date(task.createdAt)
         const dataFormatada = dataCreat.toLocaleDateString('pt-br', {
           day: '2-digit',
@@ -40,11 +37,7 @@ if(!tasks.completed){
           year: 'numeric'
         })
 
-     
-
         if (!task.completed) {
-      tarefasPendentesElements.innerHTML = ''
-          
           tarefasPendentesElements.innerHTML += `
         <li class="tarefa">
           <div class="not-done"  data-id="${task.id}" data-completed="${task.completed}"></div>
@@ -63,8 +56,6 @@ if(!tasks.completed){
         </li> 
         `
         } else {
-          tarefasConcluidasElements.innerHTML = ''
-           
           tarefasConcluidasElements.innerHTML += `
         <li class="tarefa">
           <div class="not-done"  data-id="${task.id}" data-completed="${task.completed}"></div>
@@ -83,8 +74,8 @@ if(!tasks.completed){
             `
         }
       }
-   
-//------------------------------------------- BOTÃO PARA CONCLUIR TAREFA
+
+      //------------------------------------------- BOTÃO PARA CONCLUIR TAREFA
       const completeTarefaCheckboxes = document.querySelectorAll('.not-done')
       completeTarefaCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('click', event => {
@@ -92,8 +83,9 @@ if(!tasks.completed){
         })
       })
 
-//------------------------------------------- Alterar conteúdo da tarefa
-      const alterTarefaButtonElement = document.querySelectorAll('.alterTaskButton')
+      //------------------------------------------- Alterar conteúdo da tarefa
+      const alterTarefaButtonElement =
+        document.querySelectorAll('.alterTaskButton')
 
       alterTarefaButtonElement.forEach(button => {
         button.addEventListener('click', event => {
@@ -117,13 +109,13 @@ if(!tasks.completed){
                 },
                 body: JSON.stringify({ description: newTask.toString() })
               }
-              
-               fetch(`${BASE_URL}/tasks/${button.dataset.id}`,requestConfiguration).then(response => {
+
+              fetch(
+                `${BASE_URL}/tasks/${button.dataset.id}`,
+                requestConfiguration
+              ).then(response => {
                 if (response.ok) {
                   getTasks()
-                  if(!tasks.completed){
-                    tarefasPendentesElements.innerHTML = '<p class="tarefas-pendentes"> Empty </p>'
-                  }
                 }
               })
             }
@@ -131,7 +123,7 @@ if(!tasks.completed){
         })
       })
 
-//------------------------------------------- Deletar tarefa
+      //------------------------------------------- Deletar tarefa
       const deleteTarefaButtonElement =
         document.querySelectorAll('.deleteTaskButton')
 
@@ -149,10 +141,9 @@ if(!tasks.completed){
             cancelButtonText: 'Não!'
           }).then(result => {
             if (result.isConfirmed) {
-
-//------------ Limpando direto no HTML, buscando os elementos que são filhos do botão clicado
+              //------------ Limpando direto no HTML, buscando os elementos que são filhos do botão clicado
               button.parentElement.parentElement.parentElement.parentElement.remove()
-//------------ Após limpo o HTML, é feito o mesmo na API
+              //------------ Após limpo o HTML, é feito o mesmo na API
               deleteTask(button.dataset.id)
             }
           })

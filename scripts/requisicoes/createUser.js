@@ -1,9 +1,6 @@
 //------------------------------------------- IMPORTAÇÕES
-//Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
-//Importando cabeçaho para API
 import requestHeader from '../../constants/headerRequest.js'
-// IMportando o loading
 import { loading } from '../../constants/loading.js'
 
 //------------------------------------------- INÍCIO FUNÇÃO PARA CONTROLAR E ENVIAR OS DADOS PARA A API
@@ -14,7 +11,6 @@ const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
     body: JSON.stringify(dadosObjetoUsuario)
   }
 
-  
   fetch(`${BASE_URL}/users`, requestConfiguration).then(response => {
     response.json().then(info => {
       loading()
@@ -30,7 +26,7 @@ const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
           cancelButtonText: 'Não   (criar novo usuário)    😃'
         }).then(result => {
           if (result.isConfirmed) {
-            //Condiçõ para o usuário ir diretamente para as tarefas
+            //Condição para o usuário ir diretamente para as tarefas
             localStorage.setItem('token', info.jwt)
             window.location = '/tarefas.html'
           } else {
@@ -51,15 +47,10 @@ const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
         Swal.fire({
           position: 'center',
           icon: 'error',
-          title: 'Houve um erro!',
-          text: 'Verifique o console',
-
+          title: 'Usuário já cadastrado!',
+          text: 'Utilize outro e-mail'
         })
-        console.log(`
-        ${info}
-        ${response.statusText}`)
         botaoCriaUsuario.disabled = true
-
       }
 
       if (response.status === 500) {
@@ -69,11 +60,8 @@ const createUser = (dadosObjetoUsuario, botaoCriaUsuario) => {
           title: 'Estamos com problemas no servidor',
           text: 'Desculpe o transtorno, tente novamente em instantes.'
         })
-        console.log(`
-        ${info}
-        ${response.statusText}`)
-        botaoCriaUsuario.disabled = true
 
+        botaoCriaUsuario.disabled = true
       }
     })
   })
