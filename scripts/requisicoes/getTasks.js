@@ -1,12 +1,10 @@
 //------------------------------------------- IMPORTAÇÕES
-//Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
-//Importando cabeçaho para API
 import requestHeader from '../../constants/headerRequest.js'
 import alterTasks from './alterTasks.js'
 import deleteTask from './deleteTask.js'
-import { loading } from '../../constants/loading.js'
 
+//------------------------------------------- Variáveis local
 const token = localStorage.getItem('token')
 const skeletonElements = document.querySelector('#skeleton')
 const tarefasPendentesElements = document.querySelector('.tarefas-pendentes')
@@ -15,20 +13,24 @@ const tarefasConcluidasElements = document.querySelector('.tarefas-terminadas')
 let requestConfiguration = {
   method: 'GET',
   headers: {
-    ...requestHeader,
+    ...requestHeader, // Copiando os valores/referencias pra poder informar o authorization após
     authorization: token
   }
 }
 
+
+//------------------------------------------- Início da função para trazer as tasks
 const getTasks = () => {
   fetch(`${BASE_URL}/tasks`, requestConfiguration).then(response => {
     response.json().then(tasks => {
       skeletonElements.style.display = 'none'
 
+//------------------------------------------- Limpando o html para receber as tasks
       tarefasPendentesElements.innerHTML = ''
       tarefasConcluidasElements.innerHTML = ''
-
+//------------------------------------------- Iniciando a distribuição através do for
       for (let task of tasks) {
+        
         const dataCreat = new Date(task.createdAt)
         const dataFormatada = dataCreat.toLocaleDateString('pt-br', {
           day: '2-digit',
@@ -82,9 +84,8 @@ const getTasks = () => {
         })
       })
 
-      // Alterar conteúdo da tarefa
-      const alterTarefaButtonElement =
-        document.querySelectorAll('.alterTaskButton')
+//------------------------------------------- Alterar conteúdo da tarefa
+      const alterTarefaButtonElement = document.querySelectorAll('.alterTaskButton')
 
       alterTarefaButtonElement.forEach(button => {
         button.addEventListener('click', event => {
@@ -119,7 +120,7 @@ const getTasks = () => {
         })
       })
 
-      // Deletar tarefa
+//------------------------------------------- Deletar tarefa
       const deleteTarefaButtonElement =
         document.querySelectorAll('.deleteTaskButton')
 
@@ -137,7 +138,10 @@ const getTasks = () => {
             cancelButtonText: 'Não!'
           }).then(result => {
             if (result.isConfirmed) {
-              button.parentElement.parentElement.remove()
+
+//------------ Limpando direto no HTML, buscando os elementos que são filhos do botão clicado
+              button.parentElement.parentElement.parentElement.parentElement.remove()
+//------------ Após limpo o HTML, é feito o mesmo na API
               deleteTask(button.dataset.id)
             }
           })
