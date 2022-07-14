@@ -1,9 +1,6 @@
 //------------------------------------------- IMPORTAÇÕES
-//Importando a URL da api
 import { BASE_URL } from '../../constants/base_url.js'
-//Importando cabeçaho para API
 import requestHeader from '../../constants/headerRequest.js'
-
 import getTasks from './getTasks.js'
 
 //------------------------------------------- VARIÁVEIS LOCAIS
@@ -23,7 +20,6 @@ const postTasks = novaTarefa => {
 
   fetch(`${BASE_URL}/tasks`, requestConfiguration).then(response => {
     response.json().then(novaTask => {
-   
       if (response.ok) {
         Swal.fire({
           position: 'top-end',
@@ -32,9 +28,7 @@ const postTasks = novaTarefa => {
           showConfirmButton: false,
           timer: 500
         })
-        console.log(`
-        ${novaTask}
-        ${response.statusText}`)
+
         getTasks()
       }
 
@@ -46,9 +40,6 @@ const postTasks = novaTarefa => {
           showConfirmButton: false,
           timer: 1500
         })
-        console.log(`
-        ${novaTask}
-        ${response.statusText}`)
       }
 
       if (response.status === 401) {
@@ -59,9 +50,6 @@ const postTasks = novaTarefa => {
           showConfirmButton: false,
           timer: 1500
         })
-        console.log(`
-        ${novaTask}
-        ${response.statusText}`)
       }
 
       if (response.status >= 500) {
@@ -71,13 +59,9 @@ const postTasks = novaTarefa => {
           title: 'Estamos com problemas no servidor.',
           text: 'Desculpe o transtorno. Tente novamente em instantes.'
         })
-        console.log(`
-        ${novaTask}
-        ${response.statusText}`)
       }
     })
   })
 }
 
 export default postTasks
-
