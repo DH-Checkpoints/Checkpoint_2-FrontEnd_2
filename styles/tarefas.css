@@ -7,6 +7,13 @@ header {
   margin-bottom: 2em;
 }
 
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 a {
   display: block;
   width: fit-content;
@@ -32,7 +39,6 @@ a {
   width: 2em;
   border-radius: 50%;
   background-color: white;
-  opacity: 0.4;
   margin-left: 0.7em;
 }
 
@@ -121,36 +127,29 @@ a {
   color: grey;
 }
 
-.buttons-control {
-  display: flex;
-  justify-content: flex-end;
-  width: 50px;
-}
-
 .buttons-control button {
-  width: 50%;
+  
   background-color: transparent;
 }
 
 .buttons-control img {
-  width: 80%;
+  width: 100%;
 }
 
-.right-info-control{
+.right-info-control {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
-
 
 /* Lista de tarefas ----------------------------------------------------------- */
 
 .tarefas-pendentes {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
   list-style: none;
-  margin: 2em 15%;
+  margin: 1em;
 }
 
 .tarefa {
@@ -177,16 +176,16 @@ a {
 .buttons-control {
   display: flex;
   justify-content: space-between;
-  width: 80px;
+  /* width: 50%; */
+  /* margin-bottom: 15px; */
 }
 
 .buttons-control button {
-  width: 150%;
   background-color: transparent;
 }
 
 .buttons-control img {
-  width: 80%;
+  max-width: 20px;
 }
 
 .tarefa .not-done:hover {
@@ -221,8 +220,10 @@ a {
   justify-content: space-between;
   flex: 1;
   background-color: white;
-  padding: 1em 2em;
+  padding: 1em;
   box-shadow: 2px 2px 5px lightgrey;
+  max-width: 93.5%;
+  word-break: break-word;
 }
 
 .tarefa .nome {
@@ -237,26 +238,29 @@ a {
 /* Tarefas terminadas ----------------------------------------------------------- */
 
 .titulo-terminadas {
+  font-weight: 900;
+  font-size: 1.1em;
+
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+
   position: relative;
-  width: 8em;
   text-align: center;
-  padding: 0.5em 1em;
+  padding: 1em 1em;
   background-color: white;
   border-radius: 0.2em;
   box-shadow: 3px 3px 5px lightgrey;
   color: rgb(170, 170, 170);
-  font-weight: 400;
-  font-size: 1.1em;
-  margin-left: calc(15% - 4em);
   z-index: 20;
 }
 
 .tarefas-terminadas {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
   list-style: none;
-  margin: 2em 15%;
+  margin: 1em;
 }
 
 .tarefas-terminadas i {
@@ -337,13 +341,11 @@ a {
   background-color: #7645b7;
 }
 
-<<<<<<< HEAD
-.user-image img{
+.user-image img {
   height: 35px;
   position: relative;
   border-radius: 33px;
 }
-=======
 /*=============== BREACKPOINTS ===============*/
 
 @media (max-width: 915px) {
@@ -352,10 +354,9 @@ a {
     height: 100vh;
   }
 
-header{
-  padding: 0 20px;
-}
-
+  header {
+    padding: 0 20px;
+  }
 
   main {
     display: flex;
@@ -419,16 +420,12 @@ header{
   .buttons-control {
     display: flex;
     justify-content: flex-end;
-    width: 50px;
+    width: 60px;
   }
 
   .buttons-control button {
     width: 50%;
     background-color: transparent;
-  }
-
-  .buttons-control img {
-    width: 80%;
   }
 
   /* ============ tarefas terminadas */
@@ -437,21 +434,16 @@ header{
     position: relative;
     font-weight: 900;
     font-size: 1.1em;
-    margin-left:0;
-    
+    margin-left: 0;
+
     width: 88%;
     display: flex;
     justify-content: space-between;
-
   }
-  
+
   .tarefas-terminadas {
     width: 95%;
     display: flex;
     justify-content: space-between;
   }
-  
-
-
 }
->>>>>>> 7c00d6ff4737c3ed35b386575d411936e6e6c23b

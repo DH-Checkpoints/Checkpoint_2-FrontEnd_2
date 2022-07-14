@@ -26,8 +26,10 @@ const getTasks = () => {
       skeletonElements.style.display = 'none'
 
 //------------------------------------------- Limpando o html para receber as tasks
-      tarefasPendentesElements.innerHTML = ''
-      tarefasConcluidasElements.innerHTML = ''
+      
+if(!tasks.completed){
+  tarefasPendentesElements.innerHTML = '<p class="empty"> Empty </p>'
+}
 //------------------------------------------- Iniciando a distribuição através do for
       for (let task of tasks) {
         
@@ -38,7 +40,11 @@ const getTasks = () => {
           year: 'numeric'
         })
 
+     
+
         if (!task.completed) {
+      tarefasPendentesElements.innerHTML = ''
+          
           tarefasPendentesElements.innerHTML += `
         <li class="tarefa">
           <div class="not-done"  data-id="${task.id}" data-completed="${task.completed}"></div>
@@ -57,6 +63,8 @@ const getTasks = () => {
         </li> 
         `
         } else {
+          tarefasConcluidasElements.innerHTML = ''
+           
           tarefasConcluidasElements.innerHTML += `
         <li class="tarefa">
           <div class="not-done"  data-id="${task.id}" data-completed="${task.completed}"></div>
@@ -75,7 +83,7 @@ const getTasks = () => {
             `
         }
       }
-
+   
 //------------------------------------------- BOTÃO PARA CONCLUIR TAREFA
       const completeTarefaCheckboxes = document.querySelectorAll('.not-done')
       completeTarefaCheckboxes.forEach(checkbox => {
@@ -109,10 +117,13 @@ const getTasks = () => {
                 },
                 body: JSON.stringify({ description: newTask.toString() })
               }
-
+              
                fetch(`${BASE_URL}/tasks/${button.dataset.id}`,requestConfiguration).then(response => {
                 if (response.ok) {
                   getTasks()
+                  if(!tasks.completed){
+                    tarefasPendentesElements.innerHTML = '<p class="tarefas-pendentes"> Empty </p>'
+                  }
                 }
               })
             }
