@@ -1,7 +1,7 @@
 <div align="center">
-    <h1> 👩‍💻 Checkpoint II 👨‍💻</h1>
-    <h6>Front End II</h6>
-    <h3> ✌️ Bem vindo! </h3>
+    <h1> 👩‍💻 To-Do List 👨‍💻</h1>
+    <h6>Checkpoint Front End II</h6>
+    
 </div>
 <br>
 
