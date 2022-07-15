@@ -72,60 +72,60 @@ Como dito acima, módulos são recursos muito úteis, uma vez que proporcionam q
 
 **Pagina de Login:**
 
-[x] Ambos os campos devem ser normalizados (ex: retirar espaços desnecessários);
+- [x] Ambos os campos devem ser normalizados (ex: retirar espaços desnecessários);
 
-[x] Nenhum dos campos pode ser vazio/nulo;
+- [x] Nenhum dos campos pode ser vazio/nulo;
 
-[x] O email deve ser de um tipo válido (ex: aplicar expressões regulares);
+- [x] O email deve ser de um tipo válido (ex: aplicar expressões regulares);
 
-[x] O botão de acesso deve ser habilitado apenas quando todos os campos do formulário estiverem validados corretamente.
+- [x] O botão de acesso deve ser habilitado apenas quando todos os campos do formulário estiverem validados corretamente.
 
 
 **Página de Cadastro:** 
 
-[x] Ambos os campos devem ser normalizados (ex: retirar espaços desnecessários);
+- [x] Ambos os campos devem ser normalizados (ex: retirar espaços desnecessários);
 
-[x] Nenhum dos campos pode ser vazio/nulo;
+- [x] Nenhum dos campos pode ser vazio/nulo;
 
-[x] O email deve ser de um tipo válido (ex: aplicar expressões regulares);
+- [x] O email deve ser de um tipo válido (ex: aplicar expressões regulares);
 
-[x] Os campos “senha” e “repetir senha” devem possuir a mesma informação para serem considerados válidos;
+- [x] Os campos “senha” e “repetir senha” devem possuir a mesma informação para serem considerados válidos;
 
-[x] O botão de cadastro deve ser habilitado apenas quando todos os campos do formulário estiverem validados corretamente.
+- [x] O botão de cadastro deve ser habilitado apenas quando todos os campos do formulário estiverem validados corretamente.
 
 
 **Página de Tarefas**
 
-[x] Criar tarefas;
+- [x] Criar tarefas;
 
-[x] Vizualizar tarefas pendentes;
+- [x] Vizualizar tarefas pendentes;
 
-[x] Deve-se marcar uma tarefa como concluída
+- [x] Deve-se marcar uma tarefa como concluída
 
-[x] Vizualizar tarefas concluídas;
+- [x] Vizualizar tarefas concluídas;
 
-[x] As tarefas precisam estar com a data de criação no formato DD/MM/AAAA
+- [x] As tarefas precisam estar com a data de criação no formato DD/MM/AAAA
 
-[x] Os valores/textos tarefas podem ser alteradas
+- [x] Os valores/textos tarefas podem ser alteradas
 
-[x] Uma tarefa pode ser deletada
+- [x] Uma tarefa pode ser deletada
 
 
 **Responsividade**
 
-[x] A aplicação deve ser responsiva.
+- [x] A aplicação deve ser responsiva.
 
-[x] Deve-se atender as telas mais comuns
+- [x] Deve-se atender as telas mais comuns
 
 **Extras**
 
-[x] Mostrar mensagem de erro caso seja acessada a página de tarefas sem uma autorização.
+- [x] Mostrar mensagem de erro caso seja acessada a página de tarefas sem uma autorização.
 
-[x] Redirecioanr o usuário para a página de login caso tente acessar diretamente as tarefas.
+- [x] Redirecioanr o usuário para a página de login caso tente acessar diretamente as tarefas.
 
-[x] Criar uma animação de loading
+- [x] Criar uma animação de loading
 
-[x] Animar as entradas e saída de dados
+- [x] Animar as entradas e saída de dados
 
 
 
@@ -148,16 +148,16 @@ Como dito acima, módulos são recursos muito úteis, uma vez que proporcionam q
 Gabriel Azevedo
 </a>
 
-<a href="https://github.com/Leonardo-Jaen">
-<img src="https://github.com/Leonardo-Jaen.png" height="50px" 
+<a href="https://github.com/LuizVagner">
+<img src="https://github.com/LuizVagner.png" height="50px" 
 style="border-radius: 50px"> 
-Leonardo Jean
+Luiz Vagner
 </a>
 
 
-<a href="https://github.com/AliciaOliveiras">
-<img src="https://github.com/AliciaOliveiras.png" height="50px" style="border-radius: 50px"> 
-Alicia Oliveira
+<a href="https://github.com/FabioCTD">
+<img src="https://github.com/FabioCTD.png" height="50px" style="border-radius: 50px"> 
+Fabio Augusto
 </a>
 
 </div>
