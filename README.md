@@ -135,7 +135,11 @@ Como dito acima, módulos são recursos muito úteis, uma vez que proporcionam q
 
 <a href="https://checkpoint2-frontend2.netlify.app/" target="_blank">Clique aqui</a> seu cadastro e comece hoje mesmo a organizar suas tarefas do cotidiano.
 
-<img src="https://i.ibb.co/0QNf3k2/2022-07-15-20-30-46-1.gif?raw=true"/>
+
+
+
+<video controls autoplay src="https://user-images.githubusercontent.com/16105546/179325886-913d283e-7661-43c7-abd7-9284eaddfb18.mp4" autoplay></video>
+
 
 
 
