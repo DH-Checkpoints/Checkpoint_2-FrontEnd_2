@@ -1,9 +1,7 @@
 <div align="center">
     <h1> 👩‍💻 To-Do List 👨‍💻</h1>
     <h6>Checkpoint Front End II</h6>
-    
 </div>
-<br>
 
 ---
 <div  align="center">
